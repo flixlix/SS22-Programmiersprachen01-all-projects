@@ -1,0 +1,132 @@
+body {
+  font-family: 'Libre Baskerville', serif;
+  text-align: center;
+}
+
+#fire {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px;
+  background-color: #e25822; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 12px;
+  bottom: -300px;
+  width: 220px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 36px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+#fire{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#fire:after {
+  content: '🪄';
+  position: absolute;
+  opacity: 0;  
+  top: 14px;
+  right: -20px;
+  transition: 0.5s;
+}
+#fire:hover{
+  padding-right: 24px;
+  padding-left: 8px;
+}
+#fire:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+#water {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px;
+  background-color: #2389da; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 12px;
+  bottom: -300px;
+  width: 220px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 36px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+#water{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#water:after {
+  content: '🪄';
+  position: absolute;
+  opacity: 0;  
+  top: 14px;
+  right: -20px;
+  transition: 0.5s;
+}
+#water:hover{
+  padding-right: 24px;
+  padding-left: 8px;
+}
+#water:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+#grass {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px;
+  background-color: #41980a; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 12px;
+  bottom: -300px;
+  width: 220px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 36px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+#grass{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#grass:after {
+  content: '🪄';
+  position: absolute;
+  opacity: 0;  
+  top: 14px;
+  right: -20px;
+  transition: 0.5s;
+}
+#grass:hover{
+  padding-right: 24px;
+  padding-left: 8px;
+}
+#grass:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+#result {
+  font-family: 'Libre Baskerville', serif;
+  
+}

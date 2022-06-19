@@ -1,0 +1,40 @@
+body {
+  background-image: url('background.jpg');
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+   color: #fff;
+}
+
+#rock {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#paper {
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#scissors {
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#computer-choice {
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#user-choice {
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#result {
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+ 

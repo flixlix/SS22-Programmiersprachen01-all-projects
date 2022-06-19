@@ -1,0 +1,7 @@
+Fire beats Grass
+Grass beats Water
+Water beats Fire
+
+Rock is Fire 
+Grass is Scissors
+Water is Paper
