@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anna Weinstein's Game</title>
+    <!-- HTML und CSS verlinken-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+     <p id="user"></p>
+        <p id="computer">Computer 0/3</p>
+     </nav>
+    <div class="ende-container" id="endeSeite">
+      <div></div>
+      <div class="restart-container">
+        <button onclick="restart()">
+          Play<br />
+          again
+        </button>
+      </div>
+    </div>
+    <div class="start-container" id="startSeite">
+      <h1>Rock Paper Scissors</h1>
+      <form>
+        <input
+          type="text"
+          id="username"
+          required
+          placeholder="Choose username"
+          name="username"
+          data-min="3"
+        />
+        <button type="submit">
+          Set <br />
+          user <br />
+          name
+        </button>
+      </form>
+    </div>
+    <div id="spielSeite">
+      <div class="selected">
+        <div id="laden">
+          <h1>LOADING⌛...</h1>
+        </div>
+        <div id="spielerAuswahl">
+          <div class="bild"></div>
+          <p></p>
+        </div>
+        <div id="computerAuswahl">
+          <div class="bild"></div>
+          <p></p>
+        </div>
+      </div>
+      <div id="point">
+        <h2>Point for you</h2>
+        <img src="./bilder/Konfetti.png" alt="punkt" />
+      </div>
+      <div class="auswahl">
+        <div>
+          <div class="bild" id="scissors" onclick="play(event)"></div>
+          <p>scissors</p>
+        </div>
+        <div>
+          <div class="bild" id="stone" onclick="play(event)"></div>
+          <p>stone</p>
+        </div>
+        <div>
+          <div class="bild" id="paper" onclick="play(event)"></div>
+          <p>paper</p>
+        </div>
+      </div>
+    </div>
+    <audio loop id="song">
+      <source src="./sound/monkey.mp3" type="audio/mp3" />
+    </audio>
+    <script src="index.js"></script>
+    <!--Muss am Ende vom bodytag sein!-->
+  </body>
+</html>

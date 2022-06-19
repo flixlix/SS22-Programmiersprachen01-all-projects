@@ -1,0 +1,197 @@
+<!-- © 2022 Tim Niedermeier | Hochschule für Gestaltung - Schwäbisch Gmünd -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spellcast</title>
+    <link rel="stylesheet" href="spellcast.css" />
+  </head>
+  <body>
+    <!--The idea is to create the game with fire, water and plants instead of rock, paper and scissors.
+    Gamename is Spellcast, because a hand should visually cast a spell based on the options given.
+    The two spells meet in the middle of the screen. The losing spell simply disappears and the winning spell enlarges and moves forward.
+    There is a bonus function called Bloodlust. This makes you vulnerable in the round it is cast. In the other three following rounds, 
+    it is active and gives you 50% of the damage inflicted back as life. 
+    Your spellhand has mix of life points, dodge and power
+
+    Life is 100 by default 
+    Dodge chance is 20%  
+    Power (damage) is by default 20 
+
+    At start you can manage 100 extra skillpoints
+    1 point is increase by 1%
+    Life max 200
+    Dodge max 40%
+    Power max 40
+
+    When won new opponent shows up - own lives renew. 
+
+    Level 1 opponent has 50 skill points, 2 = 60, 3 = 70 and so on.
+-->
+
+    <div class="view">
+      <!-- class for the full view -->
+
+      <!-- Special start site before you can play -->
+      <div class="start">
+        <div class="board">
+          <!-- class for the scoreboard -->
+          <div class="header">
+            <!-- class for title -->
+            <img src="assets/title.svg" />
+            <!-- add title image -->
+          </div>
+        </div>
+        <div class="permission">
+          <h2>
+            This game and any content are excluded from commercial use. Some
+            content requires permission, may not be used without permission and
+            is intended for this game only. <br />
+            <br />
+            Violation may be prosecuted, in which case it will result in a fine
+            and/or imprisonment. <br />
+            <br />
+            All rights reserved.
+          </h2>
+        </div>
+        <!-- SET MARGIN INSTEAD OF BR TAG -->
+        <br /><br /><br />
+        <h2><a class="play" onclick="playgame('play')">ACCEPT AND PLAY</a></h2>
+      </div>
+
+      <div class="lifeboard">
+        <!-- class for the scoreboard -->
+        <div class="header">
+          <!-- class for title -->
+          <img src="assets/title.svg" />
+          <!-- add title image -->
+        </div>
+        <div class="playerLIFE">
+          <p>YOUR LIFE</p>
+          <h1 class="playerh1">100</h1>
+        </div>
+        <div class="enemyLIFE">
+          <p>ENEMY LIFE</p>
+          <h1 class="enemyh1">100</h1>
+        </div>
+      </div>
+
+      <div class="spells">
+        <!-- Create header class for subclasses of possible spells -->
+        <div class="spell fire">
+          <img
+            src="assets/fire.png"
+            alt="Conflagration"
+            title="Conflagration: good against plants but weak against water"
+            onclick="pickUserSpell('fire')"
+          />
+        </div>
+        <!-- onclick will call the js function -->
+        <div class="spell water">
+          <img
+            src="assets/water.png"
+            alt="Inundation"
+            title="Inundation: good agianst fire but weak agiants plants"
+            onclick="pickUserSpell('water')"
+          />
+        </div>
+        <div class="spell plant">
+          <img
+            src="assets/plant.png"
+            alt="Overgrowing"
+            title="Overgrowing: good agianst water but weak agianst fire"
+            onclick="pickUserSpell('plant')"
+          />
+        </div>
+        <div class="spell bloodlust">
+          <img
+            src="assets/blood.png"
+            alt="bloodlust"
+            title="Bloodlust: All will lose a random amount of life"
+            onclick="pickUserSpell('bloodlust')"
+          />
+        </div>
+      </div>
+
+      <div class="casting">
+        <div class="userspell">
+          <h2>YOUR SPELL</h2>
+          <div class="spellImageContainer">
+            <img id="userPickSpell" src="assets/blood.png" />
+            <!-- Placeholder Image -->
+          </div>
+        </div>
+        <div class="outcome">
+          <div class="decision">
+            <h2>YOU LOSE</h2>
+          </div>
+          <div class="decisionInfo">
+            <p>
+              Overgrowing stoped your Inundation. <br />
+              Your opponent's wild animals have bitten you.
+            </p>
+          </div>
+          <br />
+          <div class="decisionLife"><b>Lost 20 life points</b></div>
+
+          <div class="newRound" onclick="restart()">CONTINUE</div>
+        </div>
+        <div class="adversary">
+          <h2>ADVERSARY</h2>
+          <div class="spellImageContainer">
+            <img id="adversarySpell" src="assets/blood.png" />
+            <!-- Placeholder Image -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="audio">
+      <audio controls autoplay>
+        <!-- Auto start of game soundtrack -->
+        <source src="assets/soundtrack.mp3" loop="true" autostart="true" />
+      </audio>
+    </div>
+
+    <!-- Add images of the players casting hand-->
+    <div class="caster">
+      <img src="assets/caster01.png" alt="Casting hand" title="You" />
+      <img src="assets/caster02.png" alt="Casting hand" title="You" />
+      <img src="assets/caster03.png" alt="Casting hand" title="You" />
+    </div>
+    <!-- Not included into Game -->
+    <!-- The idea was to give the player different skins -->
+
+    <!-- Add images of the healer - after each fight one of them will appear and heal you.-->
+    <div class="healer">
+      <img src="assets/healer01.png" alt="Angel" title="Angel" />
+      <img src="assets/healer02.png" alt="Monk" title="Monk" />
+      <img src="assets/healer03.png" alt="Spirit" title="Spirit" />
+    </div>
+    <!-- Not included into Game -->
+    <!-- The idea was that a healer would come after each fight and heal the player -->
+
+    <!-- Add images of the enemy's, which will be mixed up randomly-->
+    <div class="enemy">
+      <img
+        src="assets/enemy01.png"
+        alt="Spectacled Bird"
+        title="Spectacled Bird"
+      />
+      <img src="assets/enemy02.png" alt="Hellguard" title="Hellguard" />
+      <img src="assets/enemy03.png" alt="Angry Sparrow" title="Angry Sparrow" />
+      <img src="assets/enemy04.png" alt="Hell Warrior" title="Hell Warrior" />
+      <img src="assets/enemy05.png" alt="Dark Angel" title="Dark Angel" />
+      <img src="assets/enemy06.png" alt="Demon Bird" title="Demon Bird" />
+      <img src="assets/enemy07.png" alt="Black Raven" title="Black Raven" />
+      <img src="assets/enemy08.png" alt="Scholar Bird" title="Scholar Bird" />
+      <img src="assets/enemy09.png" alt="Scholars Duck" title="Scholars Duck" />
+    </div>
+    <!-- Not included into Game -->
+    <!-- The idea was to have a different opponent for each fight. -->
+
+    <script src="spellcast.js"></script>
+  </body>
+</html>

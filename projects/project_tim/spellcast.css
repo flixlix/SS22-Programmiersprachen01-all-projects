@@ -1,0 +1,212 @@
+/* © 2022 Tim Niedermeier | Hochschule für Gestaltung - Schwäbisch Gmünd */
+
+/* Update for everything with this command*/
+* {
+  padding: 0; /* sets the padding to 0 */
+  margin: 0; /* sets the margin to 0 */
+  box-sizing: border-box;
+}
+
+body {
+  /* Update the font family */
+  font-family: "SF Pro", "SF Pro Text", "Helvetica Neue", helvetica, sans-serif;
+  color: #202124;
+}
+
+.start {
+  width: 100vw; /* use of 100% width */
+  height: 100vh; /* use of 100% height */
+  background-color: #eff3f5; /* not harming the eyes that much as full white would do */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.permission {
+  /* Belongs to start.html */
+  width: 95vw;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 a {
+  /* Belongs to start.html */
+  text-align: center;
+  text-decoration: none;
+  color: purple;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 200px;
+  border: 3px solid #202124;
+  letter-spacing: 2px;
+}
+
+h2 a:hover {
+  /* Belongs to start.html */
+  color: darkviolet;
+}
+
+.view {
+  display: flex;
+  width: 100vw; /* use of 100% width */
+  height: 100vh; /* use of 100% height */
+  background-color: #eff3f5; /* not harming the eyes that much as full white would do */
+  flex-direction: column;
+  align-items: center;
+}
+
+.board {
+  width: 95vw;
+  border: 3px solid #202124;
+  border-radius: 30px;
+  margin-top: 2.5vh;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lifeboard {
+  width: 95vw;
+  border: 3px solid #202124;
+  border-radius: 30px;
+  margin-top: 2.5vh;
+  height: 150px;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  margin-left: 0px;
+}
+
+.header img {
+  height: 140px;
+}
+
+.playerLIFE,
+.enemyLIFE {
+  /* apply to both classes */
+  width: 150px;
+  height: 110px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerLIFE p,
+.enemyLIFE p {
+  /* apply to both classes */
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 2px;
+}
+
+.spells {
+  background-image: url("assets/rectangle.png"); /* Add background to the spell options */
+  background-repeat: no-repeat; /* Makes sure the background does not repeat */
+  background-position: center; /* centers the background image */
+  background-size: 250px; /* gives the background image its display size */
+  margin-top: 30px;
+  width: 450px;
+  height: 450px;
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.spells img {
+  height: 200px;
+  width: 200px;
+}
+
+.fire {
+  margin-right: 20px;
+}
+
+.water {
+  margin-left: 20px;
+}
+
+.plant {
+  margin-right: 20px;
+  margin-top: 40px;
+}
+
+.bloodlust {
+  margin-left: 20px;
+  margin-top: 40px;
+}
+
+.spells .spell {
+  cursor: pointer;
+}
+
+.spells .spell:hover {
+  transform: scaleX(-1);
+}
+
+audio {
+  display: none;
+}
+
+.casting {
+  display: none;
+  width: 95vw;
+  display: none;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.casting img {
+  height: 160px;
+  width: 160px;
+  margin-top: 10px;
+}
+
+.casting p {
+  margin-top: 10px;
+}
+
+.casting b {
+  margin-top: 10px;
+}
+
+.newRound {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: purple;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 200px;
+  border: 3px solid #202124;
+  letter-spacing: 2px;
+}
+
+.newRound:hover {
+  color: darkviolet;
+}
+
+.casting > div {
+  flex: 1;
+}
+
+.enemy {
+  display: none;
+}
+
+.healer {
+  display: none;
+}
+
+.caster {
+  display: none;
+}
