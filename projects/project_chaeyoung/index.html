@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rock Paper Scissor Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Blaka&family=Chakra+Petch:ital@1&family=Rubik+Bubbles&family=Rubik+Puddles&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="scores">
+            <p>Computer : 
+                <span id="computer_score">0</span>
+            </p>
+            <p>
+                You :
+                <span id="user_score">0</span>
+            </p>
+        </div>
+        <div class="choices">
+            <button onclick="checker('rock')">
+                <img src="pics/rock.png" width= 90px alt="">
+            </button>
+            <button onclick="checker('paper')">
+                <img src="pics/paper.png" width= 100px alt="">
+            </button>
+            <button onclick="checker('scissor')">
+                <img src="pics/scissors.png" width= 100px alt="">
+            </button>
+        </div>
+        <div class="details">
+            <p id="user_choice"></p>
+            <p id="comp_choice"></p>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
