@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <title>Rock Paper Scissor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <form id="formhidden">
+        <h2 id="heading">Rock Paper Scissor</h2>
+        <br/>
+        <div id="userInput">
+            Username <br/>
+            <input id="usernameValue" type="text" placeholder="Enter your name" required/>
+          </div>
+        <br/>
+        <!-- <div id="roundsInput">
+                <input type="radio" name="run" value="5" id="dot-1">
+                <input type="radio" name="run" id="dot-2" value="10" checked>
+                <span class="run-title">Rounds</span>
+                <div class="category">
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="run">10</span>
+                    </label>
+                </div>
+        </div> -->
+        <br/>
+        <br/>
+        <div id="startButton">
+            Start
+        </div>
+        <div id="tipp">Tipp: You can predict the next move of your<br/>opponent by checking the Index!</div>
+    </form>
+
+    <div id="gamehidden">
+
+    <div class="content">
+        <div class="oben">
+            <img id="back_button" src="images/back.png" alt="Restart"/>
+                <div class="score" id="rounds">
+                  <!-- <span>Rounds</span> -->
+                  <div class="blob" id="b1"></div>
+                  <div class="blob" id="b2"></div>
+                  <div class="blob" id="b3"></div>
+                  <div class="blob" id="b4"></div>
+                  <div class="blob" id="b5"></div>
+                  <div class="blob" id="b6"></div>
+                  <div class="blob" id="b7"></div>
+                  <div class="blob" id="b8"></div>
+                  <div class="blob" id="b9"></div>
+                  <div class="blob" id="b10"></div>
+                </div>
+            </div>
+        <!-- Game Field -->
+      <div class="game">
+        <div class="game_element" id="p_state"></div>
+        <div class="game_element" id="text_state">Start!</div>
+        <div class="game_element" id="c_state"></div>
+      </div>
+        <!-- USER/COM Field -->
+      <div class="user_and_com">
+        <!-- PLAYER -->
+        <div class="player_box">
+            <div id="username" class="nametag">
+                Your Name
+            </div>
+            <div class="gametag">
+                <div class="felder_p">
+                    <div class="choice_p" id="p_hand1">
+                        <img src="images/rock.png" width="70" alt="Rock"/>
+                    </div>
+                    <div class="index" id="p_index1">0</div>
+                </div>
+                <div class="felder_p">
+                    <div class="choice_p" id="p_hand2">
+                        <img src="images/paper.png" width="70" alt="Paper"/>
+                    </div>
+                    <div class="index" id="p_index2">0</div>
+                </div>
+                <div class="felder_p">
+                    <div class="choice_p" id="p_hand3">
+                        <img src="images/scissor.png" width="70" alt="Scissor"/>
+                    </div>
+                    <div class="index" id="p_index3">0</div>
+                </div>
+            </div>
+      </div>
+        <!-- COMPUTER -->
+    <div class="com_box">
+        <div class="nametag">
+            Computer
+        </div>
+        <div class="gametag">
+            <div class="felder_c">
+                <div class="choice_com" id="c_hand1">
+                    <img src="images/rock.png" width="70" alt="Rock" style='transform: scaleX(-1);'/>
+                </div>
+                <div class="index" id="c_index1">0</div>
+            </div>
+            <div class="felder_c">
+                <div class="choice_com" id="c_hand2">
+                    <img src="images/paper.png" width="70" alt="Paper" style='transform: scaleX(-1);'/>
+                </div>
+                <div class="index" id="c_index2">0</div>
+            </div>
+            <div class="felder_c">
+                <div class="choice_com" id="c_hand3">
+                    <img src="images/scissor.png" width="70" alt="Scissor" style='transform: scaleX(-1);'/>
+                </div>
+                <div class="index" id="c_index3">0</div>
+            </div>
+        </div>
+    </div>
+    </div><!-- USER and Com BOX closes -->
+    </div><!-- content -->
+    <div id="fehler"></div>
+    </div>
+
+    <script src="logic.js" charset="utf-8"></script>
+  </body>
+</html>
