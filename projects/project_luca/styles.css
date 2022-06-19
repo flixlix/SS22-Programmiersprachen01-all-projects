@@ -1,0 +1,971 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* impport font family from google fonts */
+
+:root {
+    --background-color: 255, 255, 255;
+    --primary-text-color: 0, 0, 0;
+    --p1-color: 255, 202, 58;
+    --p2-color: 111, 88, 201;
+    --shadow-main: 0px 0px 600px rgba(0, 0, 0, 0.1);
+    --shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+    --shadow-stronger: 0px 0px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* default values for light mode */
+
+[data-theme="dark"] {
+    --background-color: 30, 30, 30;
+    --primary-text-color: 255, 255, 255;
+    --shadow-main: 0px 0px 600px rgba(0, 0, 0, 0.3);
+    --shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+    --shadow-stronger: 0px 0px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* values for dark mode */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* change default font used */
+    background-color: rgb(var(--background-color));
+    /* make background color of the variable "background-color", to accept light and dark modes */
+    color: rgb(var(--primary-text-color));
+    /* make text color of the variable "primary-text-color", to change dynamically, depending on mode enabled */
+    margin: 0;
+    /* delete all outer margins from body */
+    padding: 0;
+    /* set all outer paddings to 0 */
+    position: absolute;
+    /* place relative to viewport */
+    height: 100%;
+    /* use whole page height */
+    width: 100%;
+    /* use whole page width */
+    display: flex;
+    /* layout of elements according to the flexbox module */
+    align-items: center;
+    /* center items on the cross axis */
+    justify-content: center;
+    /* center items along the main axis */
+    overflow: hidden;
+    /* avoid creating scrollbars */
+}
+
+
+*
+
+/* select all html elements */
+    {
+    color: rgb(var(--primary-text-color));
+    /* text color according to variable, to allow for dynamic theme changes */
+    transition: all 0.3s;
+    /* animations when changing elements size, color, position, etc. duration for animation is 0.3s */
+    box-sizing: border-box;
+    /* when sizing elements, include padding and borders */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* make it impossible for user to select text */
+}
+
+main {
+    margin: 5px 30px;
+    /* outer spacing */
+    padding: 0px;
+    /* no inner spacing */
+    position: absolute;
+    box-shadow: var(--shadow-main);
+    display: flex;
+    flex-direction: column;
+    width: 1444px;
+    height: 755px;
+    background-color: rgb(var(--background-color));
+}
+
+.result,
+.inline_block,
+.split,
+.header {
+    text-align: center;
+    margin: 0px;
+}
+
+#photo-p1,
+#photo-p2 {
+    height: 175px;
+    /* fill: rgba(var(--p1-color), 1); */
+}
+
+#photo-p1 :not(#p1-icon-default) {
+    display: none;
+}
+
+div.inline {
+    margin: 10px;
+}
+
+#player-names>*,
+.choice_title * {
+    margin-top: 0px;
+}
+
+#player-names {
+    position: relative;
+    top: -20px
+}
+/* move player names 20px upward */
+
+.inline {
+    display: inline;
+    /* make them display inline */
+}
+/* select all elements with class "inline" */
+
+.split {
+    width: 100%;
+    /* use up whole with of container */
+    display: grid;
+    /* arrange elements using on diplay grid */
+    grid-template-columns: 50% 50%;
+    /* two columns with the same size */
+    column-gap: 20px;
+    /* gap between both columns */
+}
+/* select all elements with the class "split" */
+
+.user-choice-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+    text-align: end;
+}
+/* select container with user choice */
+
+.buttons-container {
+    align-self: center;
+    display: flex;
+    gap: 0px;
+    justify-self: center;
+}
+
+
+.result {
+    font-size: 2em;
+    transform: scale(1);
+}
+
+#result {
+    margin: 10px auto;
+    padding: 10px 20px;
+    width: max-content;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#photo-p2 {
+    fill: rgba(var(--p2-color), 1);
+}
+
+
+
+#action .buttons-container button {
+    border: none;
+    /* order-radius: 20px; */
+    height: 80px;
+    width: 80px;
+    background-color: rgba(var(--p1-color), 1);
+    box-shadow: var(--shadow);
+}
+
+button {
+    cursor: pointer;
+}
+
+#action .buttons-container button:hover,
+#restart .buttons-container button:hover {
+    box-shadow: var(--shadow);
+}
+
+#action .buttons-container button:active,
+#restart .buttons-container button:active {
+    box-shadow: inset var(--shadow);
+}
+
+
+#fireworks
+
+/* container for fireworks canvas */
+    {
+    /* hidden by default to not show the fireworks when starting the game */
+    position: absolute;
+    /* position element relative to the nearest explicitly positioned parent */
+    width: 100%;
+    /* fill child element inside parent container in horizontally */
+    height: 80%;
+    /* fill child element inside parent container in horizontally */
+    left: 0;
+    /* start canvas left-aligned in comparison to the parent container */
+    top: 0;
+    /* start canvas top-aligned in comparison to the parent container */
+
+}
+
+/* in general, this was done to have the same position and size of the main element, in which the game is played */
+
+
+#fireworks canvas
+
+/* canvas for firework */
+    {
+    position: absolute;
+    /* position element relative to the nearest explicitly positioned parent */
+    width: 100%;
+    /* fill child element inside parent container in horizontally */
+    height: 100%;
+    /* fill child element inside parent container in horizontally */
+    left: 0;
+    /* start canvas left-aligned in comparison to the parent container */
+    top: 0;
+    /* start canvas top-aligned in comparison to the parent container */
+
+}
+
+/* in general, this was done to have the same position and size of the fireworks container */
+
+.announcement {
+    visibility: hidden;
+    position: absolute;
+    top: 42%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 5rem;
+    letter-spacing: 6px;
+    text-shadow: 5px 0px 0 rgba(0, 255, 255, 0.8),
+        -5px 0px 0 rgba(255, 0, 255, 0.8);
+}
+
+#restart {
+    display: none;
+    visibility: hidden;
+}
+
+#restart-btn {
+    position: relative;
+    font-weight: bold;
+    font-size: 2em;
+    width: 300px;
+    height: 100px;
+    background-color: transparent;
+
+    border-radius: 0;
+    text-align: center;
+    border: 3px solid rgb(var(--primary-text-color));
+}
+
+#theme-btn-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 27px 50px;
+    display: flex;
+    height: 40px;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    background-color: rgba(var(--primary-text-color), 0.05);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#theme-btn-container:hover {
+    background-color: rgba(var(--primary-text-color), 0.1);
+}
+
+#theme-btn-container:active {
+    background-color: rgba(var(--primary-text-color), 0.3);
+}
+
+#theme-btn {
+    fill: rgb(var(--primary-text-color));
+    margin: 10px;
+    height: 100%;
+    width: 100%;
+    max-width: 70px;
+    overflow: hidden;
+}
+
+.icons-container * path {
+    pointer-events: none;
+}
+
+path {
+    pointer-events: none;
+}
+
+.icon-button {
+    border: none;
+    background: none;
+}
+
+button.active svg {
+    fill: rgb(var(--primary-text-color));
+    transition: all 200ms ;
+}
+
+/* select all svg elements inside a button with the class "active" */
+
+/* setup game popup */
+#popup {
+    /* visibility: hidden; */
+    transition: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: start;
+    justify-self: center;
+    padding: 0px 50px;
+    padding-bottom: 90px;
+    align-self: center;
+    align-items: flex-start;
+    height: auto;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(var(--background-color));
+
+}
+
+h1 {
+    margin: 20px auto 0 auto;
+
+}
+
+
+
+.color-selector {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    height: 60px;
+    width: 100%;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+.color-selector::-webkit-color-swatch {
+    border: none;
+
+}
+
+.color-selector::-moz-color-swatch {
+    border: none;
+}
+
+input {
+    margin: 8px 0px;
+    box-shadow: var(--shadow);
+    background-color: rgb(var(--background-color));
+}
+
+input:hover,
+input:focus {
+    box-shadow: var(--shadow-stronger);
+    outline: none;
+}
+
+.input-color-container {
+    width: 50%;
+}
+
+.color-container {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.input-label {
+    text-align: start;
+    padding: 0px;
+    margin: 10px 0px;
+}
+
+input:not([type="color"]) {
+    padding: 10px;
+    margin: 0px;
+    border: none;
+    font-size: 1.5em;
+    text-align: start;
+
+    width: 400px;
+    text-align: start;
+}
+
+input::placeholder {
+    opacity: 0.5;
+}
+
+
+.submit-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: inherit;
+    padding-bottom: 20px;
+}
+
+
+#submit-button {
+    box-shadow: var(--shadow);
+    border-radius: 0px;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: rgb(var(--background-color));
+    border: none;
+    transition: all 0.25s;
+}
+
+#submit-button:hover {
+    box-shadow: var(--shadow);
+    transform: scale(1.08);
+    filter: brightness(120%);
+}
+
+#submit-button:active {
+    box-shadow: inset var(--shadow);
+    transform: scale(0.95);
+}
+
+.icons-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 20px;
+    width: 400px;
+    height: 100%;
+}
+
+.icon-picker {
+    cursor: pointer;
+    /* change cursor to invite user to click icon */
+    fill: rgba(var(--primary-text-color), 0.3);
+    /* 30% opacity */
+    transition: none;
+}
+
+/* select all icons that can be picked at the setup of the game */
+
+button:not(.active) .icon-picker:hover {
+    fill: rgba(var(--primary-text-color), 0.5);
+    /* half opacity */
+}
+
+/* select all icons, where parent container doesn't have the class active, that can be picked at the setup of the game when hovered */
+
+.icon-picker:active {
+    fill: rgba(var(--primary-text-color), 1);
+    /* full opacity */
+}
+
+/* select all icons that can be picked at the setup of the game when hovered */
+
+.icon-button {
+    margin: 0;
+    padding: 0;
+}
+
+/* select all buttons outside of the icon's svgs */
+
+svg
+
+/* select all elements with the "svg" tag */
+    {
+    width: 100%;
+    height: 100%;
+}
+
+/* make sure svgs take up whole space of parent container */
+
+.computer-speech-bubble-container {
+    /* visibility: hidden; */
+    position: fixed;
+    display: none;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 15%;
+    height: 20%;
+    left: 69%;
+    bottom: 52%;
+    transform: rotateY(200);
+}
+
+#computer-speech-bubble-image {
+    position: absolute;
+    width: 100%;
+}
+
+#computer-speech-bubble-text {
+    position: absolute;
+    left: -2.5%;
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    padding: auto 70px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+#waiting-text {
+    font-weight: bold;
+    visibility: hidden;
+    transition: all ease-in-out 0.5s;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    animation: beat .35s infinite alternate;
+    font-size: 3vw;
+    letter-spacing: 6px;
+    text-shadow: 2px 0px 0 rgba(0, 255, 255, 0.8),
+        -2px 0px 0 rgba(255, 0, 255, 0.8);
+}
+
+
+
+/* Heart beat animation */
+@keyframes beat {
+    to {
+        transform: translate(-50%, -50%) scale(1.2);
+
+    }
+}
+
+#speech-bubble {
+    visibility: hidden;
+    position: absolute;
+    bottom: 360px;
+    right: -4%;
+    transform: translate(-50%, 0);
+    width: 200px;
+    padding: 10px 20px;
+    background-color: transparent;
+    text-align: center;
+    border: 3px solid rgb(var(--primary-text-color));
+    background-color: rgb(var(--background-color));
+}
+
+#speech-bubble:after {
+    content: "";
+    /* no content */
+    position: absolute;
+    bottom: 10px;
+    left: -22px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent rgb(var(--primary-text-color)) transparent transparent;
+    /* arrow down */
+}
+
+.scissors-icon {
+    transform: rotate(170deg);
+}
+
+.buttons-container * {
+    font-size: 1.4em;
+    /* larger icons */
+    opacity: 0.8;
+    /* more transparent as default */
+    transition: all 0.08s;
+    /* 80ms */
+}
+
+.buttons-container *:hover {
+    font-size: 1.6em;
+    /* larger icons on hover */
+    opacity: 1;
+    /* full opacity */
+}
+
+.buttons-container *:active {
+    transition: all 0.05s;
+    /* faster transition when clicking */
+    font-size: 1.4em;
+    /* smaller icons on click */
+    opacity: 1;
+    /* full opacity */
+}
+
+.choices {
+    transition: all 2s;
+    position: absolute;
+    bottom: 0%;
+    font-size: 5em;
+}
+
+#photo-p1 {
+    position: relative;
+    top: 6px;
+    /* make icon of player 1 go down by 6px */
+}
+
+.choice_titles {
+    opacity: 0;
+    transition: all 5s;
+
+}
+
+.scoreboard * * {
+    transition: all 2s;
+    opacity: 0;
+    font-size: 1.2em;
+}
+
+canvas,
+div#fireworks {
+    z-index: -3;
+}
+
+.score {
+    position: relative;
+    bottom: 20px;
+}
+
+.score .number {
+    padding: 0;
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.score .text {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    position: relative;
+    bottom: 20px;
+}
+
+#help-popup {
+    width: 90%;
+    box-shadow: 0px 0px 10 rgba(0, 0, 0, 0.16);
+}
+
+.popup-open-button {
+    fill: rgba(var(--primary-text-color), 0.2);
+    /* make buttons 20% of text color */
+    cursor: pointer;
+    /* simulate link by making a pointer when mouse is over buttons */
+    position: absolute;
+    right: 0;
+    /* position open buttons on the right */
+    margin: 30px;
+    /* marging in all directios */
+    width: 30px;
+    /* 30px wide */
+    height: 30px;
+    /* 30px high */
+}
+
+#info-button {
+    top: 0;
+    /* position info button in top right corner */
+    z-index: 999999999999;
+    /* make sure info button appears on top of fireworks */
+}
+
+#table-button {
+    bottom: 0;
+    /* position table button in bottom right corner */
+    transform: scale(0);
+    /* hide icon by default */
+}
+
+.popup-open-button:hover,
+.popup-open-button:focus {
+    transition: all 0.2s;
+    /* make animation 200ms */
+    fill: rgba(var(--primary-text-color), 0.7);
+    /* more opacity when hovering */
+    transform: scale(1.2);
+    /* larger when hovering */
+}
+
+.popup-open-button:active {
+    transition: all 0.1s;
+    /* smaller animation of 100ms when clicking */
+    transform: scale(1);
+    /* scale back to original while clicking */
+    fill: rgba(var(--primary-text-color), 0.9);
+    /* 90% opacity when clicking */
+}
+
+.popup-container {
+    background-color: rgb(var(--background-color));
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: scale(0) translate(-100%, -100%);
+    transform-origin: top left;
+    transition: transform 400ms cubic-bezier(.38, .6, .48, 1.22);
+    box-shadow: var(--shadow);
+    width: 1155.18px;
+    height: 600px;
+    z-index: 9999999999999999999999999999999;
+}
+
+.popup-container img {
+    object-fit: contain;
+    /* don't let any dimension be larger than parent element */
+    width: 100%;
+    /* use up full width of parent container */
+    height: 100%;
+    /* use up full height of parent container */
+}
+
+/* selects images inside the popup container */
+
+.close-popup {
+    position: absolute;
+    /* position absolute in relation to parent element with position !static */
+    margin: 20px;
+    /* same margin top, right, bottom and left */
+    top: 0;
+    right: 0;
+    border: none;
+    /* hide border */
+    background: none;
+    /* hide border */
+}
+
+/* selects button (parent element) of close button */
+
+.close-popup svg {
+    width: 30px;
+    /* 30px size */
+    fill: rgba(var(--primary-text-color), 0.5);
+    /* half opacity */
+}
+
+/* select close buttons actual icon */
+
+.close-popup:hover svg {
+    transform: scale(1.2);
+    /* larger by 20% */
+    fill: rgb(var(--primary-text-color));
+    /* full opacity */
+}
+
+/* select close buttons that are hovered */
+
+.close-popup:active svg {
+    transform: scale(1);
+    /* return to original size */
+    fill: rgb(var(--primary-text-color));
+    /* full opacity */
+}
+
+/* select close buttons that are clicked */
+
+#table-popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    box-shadow: var(--shadow);
+    gap: 10px;
+    padding: 80px 30px;
+}
+
+/* selects container of popup with statistics and table of results */
+
+#table-popup-container ul {
+    position: sticky;
+    width: 28%;
+    align-self: center;
+    padding: 0;
+}
+
+#table-popup-container ul li {
+    white-space: nowrap;
+    overflow: hidden;
+    /* make scrollbar if table doesn't fit inside the container */
+    list-style-type: none;
+    /* don't show list */
+    line-height: 2em;
+}
+
+.table-container {
+    overflow: auto;
+    /* make scrollbar if table doesn't fit inside the container */
+    height: auto;
+    /* use up full height of parent container */
+    box-shadow: var(--shadow);
+    max-height: 100%;
+}
+
+table {
+
+    padding: 20px;
+    border-collapse: collapse;
+    /* Adjacent cells have shared borders */
+    width: 100%;
+    /* us full width of parent container */
+    /* use up whole space of parent element */
+}
+
+/* select all elements with the table tag */
+
+table td,
+table th {
+    padding: 8px;
+    /* inner padding */
+}
+
+/* ------- START TABLE BORDER ONLY INSIDE ------- */
+
+table td,
+table th {
+    border: 1px solid rgba(var(--primary-text-color), 0.5);
+}
+
+table tr:first-child td {
+    border-top: 0;
+}
+
+table tr:last-child td {
+    border-bottom: 0;
+}
+
+table tr td:first-child,
+table tr th:first-child {
+    border-left: 0;
+}
+
+table tr td:last-child,
+table tr th:last-child {
+    border-right: 0;
+}
+
+/* ------- END TABLE BORDER ONLY INSIDE ------- */
+
+
+
+/* select all table cells */
+
+table tr:nth-child(odd) {
+    background-color: rgba(var(--primary-text-color), 0.1);
+    /* darker background than rest */
+}
+
+table tr:first-child {
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: rgba(var(--primary-text-color), 0.3);
+}
+
+span.end-value {
+    font-weight: bold;
+    margin: 5px;
+}
+
+span#end-value-p1-color,
+span#end-value-p2-color {
+    padding: 1% 3%;
+}
+
+#tie-breaker-asterisc {
+    position: absolute;
+    margin: 30px 9%;
+    bottom: 0;
+    right: 0;
+}
+
+/* position asterisc at the bottom right corner of the container */
+
+#download-table-of-results {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    margin: 30px 9%;
+    left: 28%;
+    font-weight: bold;
+    transform: scale(1);
+}
+
+#download-table-of-results::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 300ms ease-in-out;
+}
+
+#download-table-of-results:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* position link for download at the bottom left corner of the container  */
+
+#download-table-of-results:hover {
+
+    transform: scale(1.07);
+    color: rgb(0, 0, 255);
+}
+
+/* make link for download larger and blue when hovering over it with the mouse */
+
+#download-table-of-results:active {
+    transition: all 100ms;
+    font-size: 1em;
+
+}
+
+/* make link for download smaller again and blue when clicking it with the mouse */
+
+
+#action {
+    visibility: hidden;
+}
+
+button {
+    border: none;
+}
