@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Bikochii`s Dungeon</title>
+</head>
+
+
+<body>
+    <div id="SplashScreen">
+        <h1>Bikochiis Dungeon</h1>
+        <P>You are sorcerer student on you way home. You took the way through the cursed deadly woods because the normal way is blocked by a mysterious rock. You heard that some other students disappeared there. You took a deep breath and you went in. Nothing happens till you were about to leave the cursed woods but suddenly a monster appears in front of you. You know this monster from storys. It is the ancient fear Bikochii. He speaks to you: "Who allowed you to cross my woods. Im the legendary Bikochii, the ancient fear, the father of the cursed woods. How dare you to cross my woods without my permission! IF you survive 5 rounds against my massiv ability power i acknowledge your power and i allow you to leave my woods. Come on pick your Spell!"  </P>
+        <input id="StartButton" onclick="myFunction()" type="button" value="Start"/>
+        </div>
+    
+    <section style="display: none;" id="container">
+    
+        <h1>Bikochiis Dungeon</h1>
+        <h2>Win 5 rounds against Bikochii, The ancient fear!</h2>
+        <h3>
+             You <span id="Score">0</span> VS <span id="BotScore">0</span> Bikochii
+        </h3>
+        <div class="display-choice">
+            <div class="choice">
+                <img id=player-choice src="./assets/thunder2.0.png">
+            </div>
+            <div class="seprator"><p> VS</p></div>
+            <div class="choice">
+                <img id=bot-choice src="./assets/fire.png">
+            </div>
+        </div>
+        <h2> Choose the type of magic you want to use!</h2>
+        <div class="magic">
+            <input class="options" type="image" src="./assets/fire.png" value="Fire" />
+            <input class="options" type="image" src="./assets/water.png" value="Water" />
+            <input class="options" type="image" src="./assets/wind.png" value="Wind" />
+            <input class="options" type="image" src="./assets/thunder2.0.png" value="Thunder" />
+
+        </div>
+    </section>
+
+
+
+
+    <script>
+
+function myFunction() {
+  document.getElementById("container").style.display ="block";
+  document.getElementById("SplashScreen").style.display="none";
+}   
+
+         
+        const options = document.querySelectorAll(".options");
+        // Punkte der Spieler
+        let Score = 0;
+        let BotScore = 0;
+
+        function updateMoves(Input, BotInput){
+            document.getElementById("player-choice").src = `./assets/${Input}.png`;
+            document.getElementById("bot-choice").src = `./assets/${BotInput}.png`;
+        }
+       
+        options.forEach((option) => {
+            option.addEventListener("click", function () {
+                const Input = this.value;
+
+                // Bots optionen und randomized input
+                const BotOptions = ["Fire", "Water", "Wind", "Thunder"];
+                const BotInput = BotOptions[Math.floor(Math.random() * 4)];
+
+                // Kontrolle  für den Code
+                console.log("Your choice:", Input)
+                console.log("Opponents choice:", BotInput)
+
+                // Input vergleich
+                updateMoves( Input, BotInput)
+                eingabevergleich(Input, BotInput);
+
+                if (GameWinner()) {
+                    Score = BotScore = 0;
+
+                }
+                updateScore();
+            });
+        });
+
+        function updateScore() {
+            document.getElementById("Score").textContent = Score;
+            document.getElementById("BotScore").textContent = BotScore;
+        }
+        // spiel endet nach 5 Runden und gewinner wird angezeigt
+        function GameWinner() {
+            if (Score === 5 || BotScore === 5) {
+                const winner =
+                    Score === 5 ?
+                    "You win this fight! Good job and GG!" :
+                    "Mission Failed We'll Get Em Next Time"
+                alert(winner);
+                return true;
+
+            }
+            return false;
+        }
+
+        function eingabevergleich(Input, BotInput) {
+            const currentMatch = `${Input} vs ${BotInput}`;
+
+            // unentschieden?
+            if (Input === BotInput) {
+                alert(`${currentMatch} is a Tie`);
+                return;
+            }
+
+            // Fire
+            if (Input === "Fire") {
+                if (BotInput === "Wind") {
+                    alert(`${currentMatch} = You Win`);
+                    Score++;
+                } else {
+                    alert(`${currentMatch} = You Lose!`);
+                    BotScore++;
+                }
+            }
+            // Water
+            else if (Input === "Water") {
+                if (BotInput === "Fire" || BotInput === "Wind" ) {
+                    alert(`${currentMatch} = You Win`);
+                    Score++;
+                    
+                } 
+                else {
+                    alert(`${currentMatch} = You Lose!`);
+                    BotScore++;
+                }
+            }
+            
+            // Wind
+            else if (Input === "Wind") {
+                if (BotInput === "Thunder") {
+                    alert(`${currentMatch} = You Win`);
+                    Score++;
+                } else {
+                    alert(`${currentMatch} = You Lose!`);
+                    BotScore++;
+                }
+            }
+            // Thunder
+            else if (Input === "Thunder") {
+                if (BotInput === "Water"||BotInput === "Fire") {
+                    alert(`${currentMatch} = You Win`);
+                    Score++;
+                } else {
+                    alert(`${currentMatch} = You Lose!`);
+                    BotScore++;
+                }
+            }
+        }
+    </script>
+</body>
+<footer>
+    <a href="https://www.freepik.com/vectors/parallax">Parallax vector created by upklyak - www.freepik.com</a>
+</footer>
+
+</html>

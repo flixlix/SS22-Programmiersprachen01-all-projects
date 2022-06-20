@@ -1,0 +1,38 @@
+* {
+    margin: 0 auto; 
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+  display: flex; /* set the flex container */
+  min-height: 100vh;
+  background: black;
+  justify-content: center; /*zentral ausrichten*/
+  align-items: center; /* center flex container */
+  font-family: 'Emilys Candy';
+}
+
+.navigation{
+  display: flex;
+  align-items: center;
+}
+.navigation_item{
+  padding: 0 1vw; /* space between buttons */
+}
+/* Aussehen der buttons */
+.navigation_button{
+  display: flex;
+  background: rgb(188, 237, 249);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+  border-radius: 10px 5px;
+  border: 1px solid #777;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em; /* use em for mobile devices */
+  color: #222222;
+  padding: 9px 32px; /* space from content to border of element */
+}
+.navigation_button:hover{
+  color: #f515c4;
+  background-color: rgb(188, 237, 249);
+}

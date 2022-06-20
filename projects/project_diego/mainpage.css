@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+h1{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 280px;
+}
+
+h1:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+
+.flex-container{
+  display: flex;
+  justify-content: center;
+}
+
+.flex-container-two{
+  display: flex;
+  justify-content: center;
+}
+
+h2{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+
+}
+
+h2:hover{
+    opacity: .8;
+    cursor: pointer;
+}
+
+.select {
+    animation: blink 1s linear infinite alternate;
+}
+
+@keyframes blink {
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .select-two {
+    display: none;
+    animation: blink 1s linear infinite alternate;
+}
+
+@keyframes blink {
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.play{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+  
+.play:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.mute{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    display: none;
+  }
+
+.mute:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+  

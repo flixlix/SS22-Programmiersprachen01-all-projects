@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunti's Rock Paper Scissors Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> 
+    <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Grape+Nuts&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="./game_style.css">
+    <link rel="stylesheet" href="./modal_style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+          <h1>Sunti's Rock Paper Scissors Game</h1>
+          <h3>starring "Rockelle", "Scrolly" and "Scissy"</h3>
+          <div id="score" class="score">
+            <h4>Player: 0</h4>
+            <h4>Computer: 0</h4>
+          </div>
+        </header>
+        <h5>How to play: chose either rock, paper or scissors and play as many times as you like!</h5>
+        <div class="choices">
+          <button id="rock" class="rock"></button>
+          <button id="paper" class="paper"></button>
+          <button id="scissors" class="scissors"></button>
+        </div>
+        <button id="restart" class="restart-btn">Restart Game</button>
+      </div>
+      <!-- Modal -->
+      <div class="modal">
+        <div id="result" class="modal-content"></div>
+        <!-- <div id="message" class="endscore"><h2></h2></div> -->
+      </div>
+    <script src="./game_score.js"></script>
+</body>
+</html>

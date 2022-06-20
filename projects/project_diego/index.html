@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissors Game</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+        <!-- link css -->
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <audio class="audio" loop="loop" src="music/round.mp3"></audio>
+        <audio class="audio1" src="music/win.wav"></audio>
+        <audio class="audio2" src="music/lose.wav"></audio>
+        <!-- header -->
+        <header class="mainmenu">
+            <h1>ROCK PAPER SCISSORS</h1>
+        </header>
+
+         <!-- score -->
+    <div class="score-board">
+        <div id="user-label" class="badge">user</div>
+        <div id="computer-label" class="badge">comp</div>
+        <span id="user-score">0</span>:<span id="computer-score">0</span>
+    </div>
+
+    <!-- result showing --> 
+    <div class="winresult">You won!</div>
+
+    <div class="loseresult">You lost!</div>
+
+    <div class="drawresult">It's a draw!</div>
+
+        <!-- images -->
+            <div class="choice-rock" id="r">
+                <img src="images/rock.png" width="150" alt="rock">
+            </div>
+
+            <div class="choice-rock-computer" id="cr">
+                <span class="computerChoice"><img src="images/rock_computer.png" width="150" alt="rock"></span>
+            </div>
+<br>
+            <div class="choice-paper" id="p">
+                <img src="images/paper.png" width="150" alt="paper">
+            </div>
+
+            <div class="choice-paper-computer" id="cp">
+                <span class="computerChoice"><img src="images/paper_computer.png" width="150" alt="rock"></span>
+            </div>
+<br>
+            <div class="choice-scissors" id="s">
+                <img src="images/scissors.png" width="150" alt="scissors">
+            </div>
+
+            <div class="choice-scissors-computer" id="cs">
+                <span class="computerChoice"><img src="images/scissors_computer.png" width="150" alt="rock"></span>
+            </div>
+
+            <!-- user selection visualized -->
+            <div class="rock-selected">
+                <img src="images/rock.png" width="150" alt="rock">
+            </div>
+
+            <div class="paper-selected">
+                <img src="images/paper.png" width="150" alt="paper">
+            </div>
+
+            <div class="scissors-selected">
+                <img src="images/scissors.png" width="150" alt="scissors">
+            </div>
+
+            <!-- computer selection -->
+            <div class="rock-computer">
+                <img src="images/rock_computer.png" width="150" alt="rock">
+            </div>
+
+            <div class="paper-computer">
+                <img src="images/paper_computer.png" width="150" alt="paper">
+            </div>
+
+            <div class="scissors-computer">
+                <img src="images/scissors_computer.png" width="150" alt="scissors">
+            </div>
+
+            <!--  battle button -->
+            <div class="battle">
+                <span id="battle-buton">BATTLE!</span>
+            </div>
+
+            <!--  play again button -->
+            <div class="play-again">
+                <span id="again-button">PLAY AGAIN</span>
+            </div>
+
+            <div class="home"><img src="images/home-01.png" width="42" alt="mute"></div>
+
+            <div class="rules"><img src="images/rules-01.png" width="800" alt="mute"/></div>
+
+            <div class="rules-button">
+                <span id="battle-buton">RULES</span>
+            </div>
+
+            <div class="hide-rules-button">
+                <span id="battle-buton">RULES</span>
+            </div>
+
+            <div class="play"><img src="images/play.png" width="40" alt="play"></div>
+            <div class="mute"><img src="images/mute.png" width="40" alt="mute"></div>
+
+            <script src="app.js"></script>
+    </body>
+</html> 
